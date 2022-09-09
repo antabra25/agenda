@@ -12,15 +12,29 @@
     padding-left: 0.5rem;
 }
 
-.note h1 {
+.note .note-title {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 1rem;
     margin-top: 1rem;
 
+
 }
 
-.note p {
+.note .note-title input, .note .note-body textarea {
+    width:100%;
+    outline: none;
+    background: transparent;
+    border-color: transparent;
+    color: white;
+    font-family: inherit;
+}
+
+.note-body textarea {
+    border-radius: 0px 0px 15px 50px;
+}
+
+.note .note-body {
     font-size: 14px;
     font-weight: 400;
 }
