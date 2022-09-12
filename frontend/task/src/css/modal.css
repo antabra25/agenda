@@ -1,0 +1,65 @@
+
+.box-modal img {
+    z-index: 10000;
+    align-self: flex-end;
+    margin-top: 0rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+.modal {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+    position: fixed;
+    z-index: 1000;
+    top: 30%;
+    left: 30%;
+    column-gap: 0.5rem;
+    width: 600px;
+    height: 350px;
+    background: #0D5C63;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    mix-blend-mode: normal;
+}
+
+.box-modal textarea {
+    width: 450px;
+    height: 180px;
+    resize: none;
+    border:0px;
+    color:#0D5C63;
+    padding-top: 1rem;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+
+}
+
+.box-modal input , .box-modal textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding-left:1rem;
+
+}
+
+.box-modal textarea:focus{
+    outline: none;
+}
+
+.box-modal input {
+    width: 450px;
+    height: 30px;
+    color:#FFFFFA;
+    background: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: #FFFFFA;
+    outline: none;
+
+
+}

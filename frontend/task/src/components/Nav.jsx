@@ -3,8 +3,11 @@ const Nav =()=>{
     return(
         <>
             <header className="header">
+                <h1>Agenda de Actividades</h1>
                 <nav>
-                    <h1>Agenda de Actividades</h1>
+                    <ul>
+                        <li>Nueva</li>
+                    </ul>
                 </nav>
             </header>
         </>
