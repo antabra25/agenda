@@ -1,13 +1,17 @@
-const task = require('../models/Task')
+const Task = require('../models/Task')
 
 exports.createTask = async (req,res,next) =>{
+
+    const {title,body} = req.body
     try {
-        const result =  await task.create({
-            title:'Titulo de Prueba',
-            body:'Esto es un cuerpo de nota de prueba para la creacion de una entrada.'
+        console.log(title,body)
+        const task =  await Task.create({
+            title:title,
+            body:body
         })
-        if(result){
-            console.log(result)
+        if(task){
+            console.log(task)
+            res.status(201).json({id:task.id,title:task.title,body:task.body})
         }
     }catch (error){
         console.log(error)
@@ -16,18 +20,62 @@ exports.createTask = async (req,res,next) =>{
 }
 
 
-exports.getTak = (req,res,next)=>{
+exports.getTak =async (req,res,next)=>{
+
+    try {
+        const task = await Task.findAll({
+            where:{
+                id:req.params.id
+            }
+        })
+        res.status(200).json(task)
+    }catch (error){
+        console.log(error)
+    }
+
+
 
 }
 
-exports.listTask = (req,res,next) =>{
+exports.listTask = async (req,res,next) =>{
+    try {
+        const tasks = await Task.findAll()
+        res.status(200).json(tasks)
+    }catch (error){
+        console.log(error)
+    }
+
 
 }
 
-exports.updateTask = (req,res,next) =>{
+exports.updateTask = async (req,res,next) =>{
+
+    try {
+        const task = await Task.update({
+            title:req.body.title,
+            body:req.body.body
+        },{
+            where:{
+                id:req.params.id
+            }
+        })
+        res.status(200).json(task)
+    }catch (error){
+        console.log(error)
+    }
 
 }
 
-exports.deleteTask =(req,res,next)=>{
+exports.deleteTask = async (req,res,next)=>{
+    try {
+        const task = await Task.destroy({
+            where:{
+                id:req.params.id
+            }
+        })
+        res.status(200).json(task)
+    }catch (error){
+        console.log(error)
+    }
 
 }
