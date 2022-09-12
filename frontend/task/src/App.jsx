@@ -3,6 +3,7 @@ import TaskList from "./components/TaskList.jsx";
 import Footer from "./components/Footer.jsx";
 import Modal from "./components/Modal.jsx";
 import {useEffect, useState} from "react";
+import axios from "axios";
 import './index.css'
 import './App.css'
 
@@ -12,34 +13,32 @@ function App() {
 
     const [isVisible,setIsVisible] = useState(false)
 
-    const task = [
-        {id:1,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:2,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:3,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:4,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:5,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:6,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:7,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:8,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:9,title:"Primera",body:"Esto es el contenido de esta nota."},
-        {id:10,title:"Primera",body:"Esto es el contenido de esta nota."},
-
-    ]
-
-    const tasks = []
 
 
     const handleNote = (taskId,title,body) => {
         console.log(taskId,title,body)
     }
 
+    const handleDisplayModal = (isVisible) => {
+        setIsVisible(isVisible)
+    }
+
+     useEffect(async ()=>{
+            const res = await axios.get('http://localhost:3000/list/task')
+            if(res.status === 200){
+                console.log(res.data)
+                const tasks = res.data
+            }
+
+     },[]);
+
   return (
 
     <div className="app-wrapper">
-        <Nav/>
+        <Nav onDisplayModal={handleDisplayModal}/>
         <main>
-        <TaskList tasks={tasks} onNote={handleNote}/>
-        {isVisible && <Modal/> }
+            <TaskList tasks={tasks} onNote={handleNote}/>
+            {isVisible && <Modal onDisplayModal={handleDisplayModal}/> }
         </main>
         <Footer/>
     </div>

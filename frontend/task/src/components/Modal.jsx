@@ -3,7 +3,7 @@ import '../css/modal.css'
 import closeBtn from '../assets/closeBtn.svg'
 import LightButton from "./LightButton.jsx";
 
-const Modal = ({onAddTask})=>{
+const Modal = ({onAddTask,onDisplayModal})=>{
     const [task,setTask] = useState({})
     const handleChangeTask = (e) =>{
        setTask({
@@ -19,11 +19,15 @@ const Modal = ({onAddTask})=>{
 
     }
 
+    const handleDisplayModal = () =>{
+        onDisplayModal(false)
+    }
+
     return (
         <div className="box-modal">
 
             <form className="modal" onSubmit={handleSubmitTask}>
-                <img src={closeBtn} alt=""/>
+                <img src={closeBtn} onClick={handleDisplayModal}/>
                 <div>
                     <input type="text" name="title" defaultValue="Titulo" value={task.title} onChange={handleChangeTask}/>
                 </div>

@@ -28,7 +28,11 @@ exports.getTak =async (req,res,next)=>{
                 id:req.params.id
             }
         })
-        res.status(200).json(task)
+        if(task){
+            res.status(200).json(task)
+        }else {
+            res.status(404).json({message:"Task not found"})
+        }
     }catch (error){
         console.log(error)
     }
@@ -40,6 +44,11 @@ exports.getTak =async (req,res,next)=>{
 exports.listTask = async (req,res,next) =>{
     try {
         const tasks = await Task.findAll()
+        if(tasks){
+            res.status(200).json(tasks)
+        }else {
+            res.status(404).json({message:"Task not found"})
+        }
         res.status(200).json(tasks)
     }catch (error){
         console.log(error)
