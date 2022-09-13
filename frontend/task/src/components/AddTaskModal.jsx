@@ -23,7 +23,8 @@ const AddTaskModal = ({onAddTask,setIsVisible})=>{
 
         if(validForm){
             const newTask = {title:title,body:body}
-            axios.post('http://localhost:3000/create/task',newTask).then((res)=>{
+            axios.post('http://localhost:3000/create/task',newTask)
+                .then((res)=>{
                 onAddTask(newTask)
                 setIsVisible(false)
             }).catch((error)=>{
@@ -49,9 +50,7 @@ const AddTaskModal = ({onAddTask,setIsVisible})=>{
                 <div>
                     <LightButton >AGREGAR</LightButton>
                 </div>
-
             </form>
-
         </div>
     )
 

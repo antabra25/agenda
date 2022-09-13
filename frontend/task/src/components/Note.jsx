@@ -15,14 +15,16 @@ const Note = ({id,title,body}) => {
         })
     }
     const deleteTask = (id)=>{
-        axios.delete(`http://localhost:3000/delete/task/${id}`).then(()=>{
+        axios.delete(`http://localhost:3000/delete/task/${id}`)
+            .then(()=>{
 
         }).catch(()=>{
 
         })
     }
     const updateTask = ()=>{
-        axios.put(`http://localhost:3000/update/task/${id}`,{title:note.title,body:note.body}).then((res)=>{
+        axios.put(`http://localhost:3000/update/task/${id}`,{title:note.title,body:note.body})
+            .then((res)=>{
             console.log(res.data)
         }).catch((error)=>{
             console.log(error)
