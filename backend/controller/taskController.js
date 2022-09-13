@@ -49,7 +49,7 @@ exports.listTask = async (req,res,next) =>{
         }else {
             res.status(404).json({message:"Task not found"})
         }
-        res.status(200).json(tasks)
+
     }catch (error){
         console.log(error)
     }

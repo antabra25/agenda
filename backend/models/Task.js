@@ -18,7 +18,8 @@ const Task = sequelize.define('activities',{
         type:DataTypes.TEXT,
         allowNull:false
     }
-})
+},
+    {timestamps:false})
 
 
 module.exports = Task;

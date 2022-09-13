@@ -38,3 +38,21 @@
     font-size: 14px;
     font-weight: 400;
 }
+
+.btn-control-note {
+
+    position:relative;
+
+}
+
+.control-img-wrapper {
+    display: flex;
+    column-gap: 0.5rem;
+    position:absolute;
+    top:-2rem;
+    left: 230px;
+}
+
+.btn-control-note img {
+    cursor: pointer;
+}
