@@ -1,11 +1,11 @@
 import '../css/lightbutton.css'
 
 
-const LightButton = ({children,onClick}) => {
+const LightButton = ({children}) => {
 
     return(
         <>
-            <button className="light-button"  onClick={onClick}>
+            <button className="light-button" >
                 {children}
             </button>
         </>

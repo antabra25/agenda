@@ -13,7 +13,6 @@ const Note = ({id,title,body}) => {
             ...note,
                 [e.target.name]:e.target.value
         })
-
     }
     const deleteTask = (id)=>{
         axios.delete(`http://localhost:3000/delete/task/${id}`).then(()=>{

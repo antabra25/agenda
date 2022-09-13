@@ -15,11 +15,6 @@ function App() {
     const [tasks,setTasks] = useState([])
 
 
-
-    const handleDisplayModal = (isVisible) => {
-        setIsVisible(isVisible)
-    }
-
     const handleTasks = (value) =>{
         setTasks(...value)
 
@@ -36,10 +31,10 @@ function App() {
   return (
 
     <div className="app-wrapper">
-        <Nav onDisplayModal={handleDisplayModal}/>
+        <Nav setIsVisible={setIsVisible}/>
         <main>
-            <TaskList tasks={tasks} />
-            {isVisible && <AddTaskModal onDisplayModal={handleDisplayModal}/> }
+            <TaskList tasks={tasks}  />
+            {isVisible && <AddTaskModal setIsVisible={setIsVisible} onAddTask={(newTask)=>setTasks([...tasks,newTask])} /> }
         </main>
         <Footer/>
     </div>

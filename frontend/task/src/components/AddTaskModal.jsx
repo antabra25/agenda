@@ -5,7 +5,7 @@ import LightButton from "./LightButton.jsx";
 
 import axios from "axios";
 
-const AddTaskModal = ({onAddTask,onDisplayModal})=>{
+const AddTaskModal = ({onAddTask,setIsVisible})=>{
 
     const [title,setTitle] = useState('')
     const [body,setBody] = useState('')
@@ -14,6 +14,7 @@ const AddTaskModal = ({onAddTask,onDisplayModal})=>{
 
     const handleSubmitTask = (e) =>{
         e.preventDefault()
+
         if(title.length > 0 && body.length > 0){
             setValidForm(true)
         }else{
@@ -21,8 +22,10 @@ const AddTaskModal = ({onAddTask,onDisplayModal})=>{
         }
 
         if(validForm){
-            axios.post('http://localhost:3000/create/task',{title:title,body:body}).then((res)=>{
-                onDisplayModal(false)
+            const newTask = {title:title,body:body}
+            axios.post('http://localhost:3000/create/task',newTask).then((res)=>{
+                onAddTask(newTask)
+                setIsVisible(false)
             }).catch((error)=>{
                 console.log(error)
             })
@@ -31,15 +34,12 @@ const AddTaskModal = ({onAddTask,onDisplayModal})=>{
 
     }
 
-    const handleDisplayModal = () =>{
-        onDisplayModal(false)
-    }
 
     return (
         <div className="box-modal">
 
-            <form className="modal" onSubmit={handleSubmitTask}>
-                <img src={closeBtn} onClick={handleDisplayModal}/>
+            <form className="modal" onSubmit={handleSubmitTask} >
+                <img src={closeBtn} onClick={()=>setIsVisible(false)}/>
                 <div>
                     <input type="text" name="title" placeholder="Titulo" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
                 </div>
@@ -47,7 +47,7 @@ const AddTaskModal = ({onAddTask,onDisplayModal})=>{
                     <textarea name="content" placeholder="Contenido" value={body} onChange={(e)=>{setBody(e.target.value)}} />
                 </div>
                 <div>
-                    <LightButton>AGREGAR</LightButton>
+                    <LightButton >AGREGAR</LightButton>
                 </div>
 
             </form>
