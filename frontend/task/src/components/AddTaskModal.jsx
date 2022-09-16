@@ -39,7 +39,7 @@ const AddTaskModal = ({onAddTask,setIsVisible})=>{
     return (
         <div className="box-modal">
 
-            <form className="modal" onSubmit={handleSubmitTask} >
+            <form className="modal" >
                 <img src={closeBtn} onClick={()=>setIsVisible(false)}/>
                 <div>
                     <input type="text" name="title" placeholder="Titulo" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
@@ -48,7 +48,7 @@ const AddTaskModal = ({onAddTask,setIsVisible})=>{
                     <textarea name="content" placeholder="Contenido" value={body} onChange={(e)=>{setBody(e.target.value)}} />
                 </div>
                 <div>
-                    <LightButton >AGREGAR</LightButton>
+                    <LightButton onClick={handleSubmitTask}>AGREGAR</LightButton>
                 </div>
             </form>
         </div>
